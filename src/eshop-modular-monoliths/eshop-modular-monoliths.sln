@@ -3,8 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bootstrapper", "Bootstrapper", "{B747C67F-52B6-447B-8282-2B22BF8B2405}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{7FF8F13E-734C-4706-A55C-5DF031AC9A99}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{D5FF011D-C054-4B4A-B1F6-684E4BD8029C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{E2172EE4-1271-4CAD-B1CA-4720A77FCD74}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E2172EE4-1271-4CAD-B1CA-4720A77FCD74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2172EE4-1271-4CAD-B1CA-4720A77FCD74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2172EE4-1271-4CAD-B1CA-4720A77FCD74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2172EE4-1271-4CAD-B1CA-4720A77FCD74}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E2172EE4-1271-4CAD-B1CA-4720A77FCD74} = {B747C67F-52B6-447B-8282-2B22BF8B2405}
 	EndGlobalSection
 EndGlobal
