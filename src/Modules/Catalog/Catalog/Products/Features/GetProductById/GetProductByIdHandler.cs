@@ -12,7 +12,7 @@ namespace Catalog.Products.Features.GetProductById
             var product = await dbContext.Products.AsNoTracking().SingleOrDefaultAsync(p => p.Id == query.Id, cancellationToken);
             if (product is null)
             {
-                throw new Exception($"Product not found: {query.Id}");
+                throw new ProductNotFoundException(query.Id);
             }
 
             // mapping product entity to productDto

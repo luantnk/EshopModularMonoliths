@@ -4,5 +4,12 @@ services:
   eshopdb:
     image: postgres
 
+  seq:
+    image: datalust/seq:latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SEQ_FIRSTRUN_ADMINPASSWORD=12345
+
+
 volumes:
   postgres_eshopdb:
