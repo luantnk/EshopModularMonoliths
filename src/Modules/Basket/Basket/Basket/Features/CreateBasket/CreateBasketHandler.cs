@@ -1,6 +1,4 @@
-﻿global using Basket.Basket.Dtos;
-global using Shared.CQRS;
-using FluentValidation;
+﻿
 
 namespace Basket.Basket.Features.CreateBasket
 {
