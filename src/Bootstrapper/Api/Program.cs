@@ -1,25 +1,29 @@
+
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Host.UseSerilog((context, config) => config.ReadFrom.Configuration(context.Configuration)
-);
+builder.Host.UseSerilog((context, config) =>
+    config.ReadFrom.Configuration(context.Configuration));
+
 // Add services to the container.
-//builder.Services.AddCarter(configurator: config =>
-//{
-//    var catalogModules = typeof(CatalogModule).Assembly.GetTypes()
-//    .Where(t => t.IsAssignableTo(typeof(ICarterModule))).ToArray();
-//    config.WithModules(catalogModules);
-//});
 
-builder.Services.AddCarterWithAssemblies(typeof(CatalogModule).Assembly);
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
+//common services: carter, mediatr, fluentvalidation
+var catalogAssembly = typeof(CatalogModule).Assembly;
+var basketAssembly = typeof(BasketModule).Assembly;
 
+builder.Services
+    .AddCarterWithAssemblies(catalogAssembly, basketAssembly);
 
+builder.Services
+    .AddMediatRWithAssemblies(catalogAssembly, basketAssembly);
+
+//module services: catalog, basket, ordering
 builder.Services
     .AddCatalogModule(builder.Configuration)
     .AddBasketModule(builder.Configuration)
     .AddOrderingModule(builder.Configuration);
 
-builder.Services.AddExceptionHandler<CustomExceptionHandler>();
+builder.Services
+    .AddExceptionHandler<CustomExceptionHandler>();
 
 var app = builder.Build();
 
@@ -33,6 +37,5 @@ app
     .UseCatalogModule()
     .UseBasketModule()
     .UseOrderingModule();
-
 
 app.Run();
