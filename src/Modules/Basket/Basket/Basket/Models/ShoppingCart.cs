@@ -1,6 +1,4 @@
-﻿using Shared.DDD;
-
-namespace Basket.Basket.Models;
+﻿namespace Basket.Basket.Models;
 public class ShoppingCart : Aggregate<Guid>
 {
     public string UserName { get; private set; } = default!;
