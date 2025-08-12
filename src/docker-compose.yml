@@ -3,25 +3,15 @@ version: '3.4'
 services:
   eshopdb:
     image: postgres
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: example
-      POSTGRES_DB: eshopdb
-    volumes:
-      - postgres_eshopdb:/var/lib/postgresql/data
 
   distributedcache:
     image: redis
 
   seq:
     image: datalust/seq:latest
-    ports:
-      - "9091:80" 
-    environment:
-      SEQ_FIRSTRUN_ADMINPASSWORD: "12345"
-    volumes:
-      - seq_data:/data
+
+  messagebus:
+    image: rabbitmq:management
 
 volumes:
   postgres_eshopdb:
-  seq_data:
