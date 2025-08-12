@@ -1,4 +1,4 @@
-﻿
+﻿using Shared.Pagination;
 
 namespace Catalog.Products.Features.GetProducts;
 

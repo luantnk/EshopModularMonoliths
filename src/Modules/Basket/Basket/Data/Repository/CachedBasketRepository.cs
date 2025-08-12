@@ -24,14 +24,14 @@ public class CachedBasketRepository
 
         var cachedBasket = await cache.GetStringAsync(userName, cancellationToken);
         if (!string.IsNullOrEmpty(cachedBasket))
-        {
+        {            
             return JsonSerializer.Deserialize<ShoppingCart>(cachedBasket, _options)!;
-        }
+        }            
 
         var basket = await repository.GetBasket(userName, asNoTracking, cancellationToken);
-
+        
         await cache.SetStringAsync(userName, JsonSerializer.Serialize(basket, _options), cancellationToken);
-
+        
         return basket;
     }
 
@@ -51,12 +51,12 @@ public class CachedBasketRepository
         await cache.RemoveAsync(userName, cancellationToken);
 
         return true;
-    }
+    }    
 
     public async Task<int> SaveChangesAsync(string? userName = null, CancellationToken cancellationToken = default)
     {
         var result = await repository.SaveChangesAsync(userName, cancellationToken);
-
+        
         if (userName is not null)
         {
             await cache.RemoveAsync(userName, cancellationToken);

@@ -10,7 +10,7 @@ using Shared.Data.Interceptors;
 namespace Basket;
 public static class BasketModule
 {
-    public static IServiceCollection AddBasketModule(this IServiceCollection services,
+    public static IServiceCollection AddBasketModule(this IServiceCollection services, 
         IConfiguration configuration)
     {
         // Add services to the container.
@@ -18,7 +18,7 @@ public static class BasketModule
 
         // 2. Application Use Case services
         services.AddScoped<IBasketRepository, BasketRepository>();
-        services.Decorate<IBasketRepository, CachedBasketRepository>();
+        services.Decorate<IBasketRepository, CachedBasketRepository>();        
 
         // 3. Data - Infrastructure services
         var connectionString = configuration.GetConnectionString("Database");

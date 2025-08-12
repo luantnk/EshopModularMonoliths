@@ -12,8 +12,9 @@ internal class DeleteBasketHandler(IBasketRepository repository)
         //Delete Basket entity from command object
         //save to database
         //return result
-
+      
         await repository.DeleteBasket(command.UserName, cancellationToken);
+
         return new DeleteBasketResult(true);
     }
 }
